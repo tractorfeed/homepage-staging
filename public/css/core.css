@@ -57,3 +57,21 @@ body {
 abbr {
 	cursor: help;
 }
+
+/* signup form */
+#signup input:not(:focus){
+	opacity:0.6;
+}
+
+#signup  input:required{
+}
+
+#signup  input:valid {
+	opacity:0.8;
+}		
+
+#signup input:focus:invalid{
+	border:1px solid red;
+	background-color:#FFEFF0;
+}
+/* end signup form */
