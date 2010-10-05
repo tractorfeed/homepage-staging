@@ -11,7 +11,7 @@ get '/members' do
 end
 
 get '/members/:name' do
- @name = #{params[:name]}
+ @name = params[:name]
  erb :member
 end
 
