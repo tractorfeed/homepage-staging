@@ -1,3 +1,3 @@
-require 'amnesia'
+# require 'amnesia'
 require 'app'
 run Sinatra::Application
