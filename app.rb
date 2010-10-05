@@ -1,5 +1,4 @@
 require 'rubygems'
-require 'erb'
 require 'sinatra'
 
 # display the index page
