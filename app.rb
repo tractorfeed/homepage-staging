@@ -1,5 +1,17 @@
 require 'rubygems'
 require 'sinatra'
+require 'digest/sha2'
+
+helpers do
+
+  def hashit(pass)
+    salt = "some amazingly long and salty bit of stringage"
+    Digest::SHA256.digest(pass+salt)
+  end
+
+end
+
+
 
 # display the index page
 get '/' do
@@ -29,6 +41,11 @@ end
 
 get '/signup' do
  erb :signup
+end
+
+post '/signup' do
+  # create user
+  
 end
 
 # used for monitoring unicorn status
