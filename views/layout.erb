@@ -1,7 +1,20 @@
-<html>
-  <head>
-  </head>
-  <body>
-  <%= yield %>
-  </body>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<%= yield :head %>
+</head>
+<body>
+<div>
+	<header>
+		<h1><a href="/">Page Title</a></h1>
+		<%= yield :nav %>
+	</header>
+	
+	<%= yield %>
+	
+	<footer>
+		<%= yield :footer %>
+	</footer>
+</div>
+</body>
 </html>

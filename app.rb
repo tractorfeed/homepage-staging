@@ -31,7 +31,8 @@ get '/signup' do
  erb :signup
 end
 
-# for monitoring unicorn status
+# used for monitoring unicorn status
+# ( monitor1 is for nginx...)
 get '/monitor2.html' do
  erb :monitor2
 end
@@ -45,6 +46,10 @@ error 403 do
     'Access forbidden'
 end
 
-error 405..510 do
+error 500 do
     'Boom'
+end
+
+error do
+    'wtf'
 end 
