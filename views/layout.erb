@@ -1,19 +1,51 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<%= yield :head %>
+	<meta charset="utf-8" />
+	<!--[if IE]><![endif]-->
+	<title>Project Name</title>
+	
+	<meta name="description" content="Here is the description of your project." />
+	<meta name="author" content="Your Name Here" />
+	<meta name="Copyright" content="Copyright Your Name Here 2010. All Rights Reserved." />
+	<meta name="DC.title" content="Project Name" />
+	<meta name="DC.subject" content="What you're about." />
+	<meta name="DC.creator" content="Who made this site." />
+	<meta name="google-site-verification" content="" />
+	
+	<link rel="shortcut icon" href="/img/favicon.png"/>
+	<link rel="apple-touch-icon" href="/img/custom_icon.png"/>
+	<link rel="stylesheet" href="/css/main.css" />
+	<link rel="stylesheet" href="/css/print/main.css" media="print" />
+
+	<!--[if IE]>
+	<link rel="stylesheet" href="/css/ie.css" />
+	<![endif]-->
+	<!--[if lt IE 9]>
+	<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+	
+	<!-- jQuery -->
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+	<script src="/js/functions.js"></script>
 </head>
 <body>
 <div>
 	<header>
 		<h1><a href="/">Page Title</a></h1>
-		<%= yield :nav %>
+		<nav>
+			<ol>
+				<li><a href="">Nav Link 1</a></li>
+				<li><a href="">Nav Link 2</a></li>
+				<li><a href="">Nav Link 3</a></li>
+			</ol>
+		</nav>
 	</header>
 	
 	<%= yield %>
 	
 	<footer>
-		<%= yield :footer %>
+		<p><small>&copy; Copyright Tractor Feed 2010. All Rights Reserved.</small></p>
 	</footer>
 </div>
 </body>
