@@ -1,6 +1,0 @@
-sinatra
-dm-core -s git://github.com/datamapper/dm-validations
-dm-postgres-adapter
-dm-migrations
-dm-validations
-dm-timestamps
