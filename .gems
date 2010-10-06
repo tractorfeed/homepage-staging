@@ -3,8 +3,8 @@ rack
 extlib
 addressable
 json_pure
-dm-core --version 1.0.0
-dm-postgres-adapter --version 1.0.0
-dm-migrations --version 1.0.0
-dm-validations --version 1.0.0
-dm-timestamps --version 1.0.0
+dm-core
+dm-postgres-adapter
+dm-migrations
+dm-validations
+dm-timestamps
