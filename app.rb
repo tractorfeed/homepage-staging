@@ -31,6 +31,7 @@ class User
 end
 
 configure do
+  DataMapper.finalize
   DataMapper.auto_upgrade!
   set :sessions, true
 end
