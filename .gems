@@ -1,9 +1,9 @@
 sinatra
-dm-core -s git://github.com/datamapper/dm-validations
-dm-postgres-adapter --prerelease
-dm-migrations --prerelease
-dm-validations --prerelease
-dm-timestamps --prerelease
+dm-core --version 1.0.0
+dm-postgres-adapter --version 1.0.0
+dm-migrations --version 1.0.0
+dm-validations --version 1.0.0
+dm-timestamps --version 1.0.0
 ext-lib
 addressable
 json_pure
