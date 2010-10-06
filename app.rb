@@ -27,7 +27,8 @@ class User
   property :updated_at, DateTime
   property :updated_on, Date
   
-  validates_uniqueness_of username, email
+  # thanks solnic!
+  validates_uniqueness_of :username, :email
 end
 
 configure do
