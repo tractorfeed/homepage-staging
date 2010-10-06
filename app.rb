@@ -15,7 +15,7 @@ class User
   property :username,   String,   :required => true, :format => /[a-zA-Z0-9]*/,  :length => 6..20
   property :firstname,  String,   :default  => "",   :format => /[a-zA-Z]*/,     :length => 0..20
   property :lastname,   String,   :default  => "",   :format => /[a-zA-Z]*/,     :length => 0..20
-  property :link,       String,   :default  => "",   :format => :url ,          :length => 0..512
+  property :link,       String,   :default  => "",   :format => :url ,           :length => 0..512
   property :about,      Text,     :default  => ""
   property :email,      String,   :required => true, :format => :email_address, :length => 0..256
   property :password,   String,   :required => true, :length => 6..20
@@ -76,14 +76,14 @@ end
 post '/signup' do
   # create user
   user = User.new(:username   => params[:username], 
-                :email      => params[:email],
-                :password   => hashit(params[:password]),
-	  	  	    :created_at => Time.now)
+                  :email      => params[:email],
+                  :password   => hashit(params[:password]),
+	  	  	      :created_at => Time.now)
   if user.save
     # my_account is valid and has been saved
 	redirect '/signup#thanks'
   else
-    session[:regErr] = User.errors
+    session[:regErr] = user.errors
 	redirect '/signup'
   end
 end
@@ -105,6 +105,7 @@ end
 
 error 500 do
     'Boom'
+	session[:regErr]
 end
 
 error do
