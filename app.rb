@@ -32,9 +32,10 @@ class User
   validates_uniqueness_of :username, :email
 end
 
+DataMapper.finalize
+DataMapper.auto_upgrade!
+
 configure do
-  DataMapper.finalize
-  DataMapper.auto_upgrade!
   set :sessions, true
 end
 
