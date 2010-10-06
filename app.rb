@@ -2,30 +2,34 @@ require 'rubygems'
 require 'sinatra'
 require 'dm-core'
 require 'dm-migrations'
+require 'dm-validations'
 require 'digest/sha2'
 
 # DataMapper.setup(:default, ENV['DATABASE_URL'])
-DataMapper.setup(:default, 'sqlite::memory:')
+DataMapper.setup(:default, 'sqlite://local.db')
 
 class User
   include DataMapper::Resource
 
   property :id,         Serial    # An auto-increment integer key
-  property :username,   String,   :required => true
-  property :firstname,  String,   :default  => ""
-  property :lastname,   String,   :default  => ""
-  property :link,       String,   :default  => ""
+  property :username,   String,   :required => true, :format => /[a-zA-Z0-9]*/,  :length => 6..20
+  property :firstname,  String,   :default  => "",   :format => /[a-zA-Z]*/,     :length => 0..20
+  property :lastname,   String,   :default  => "",   :format => /[a-zA-Z]*/,     :length => 0..20
+  property :link,       String,   :default  => "",   :format => :url ,          :length => 0..512
   property :about,      Text,     :default  => ""
-  property :email,      String,   :required => true
-  property :password,   String,   :required => true
+  property :email,      String,   :required => true, :format => :email_address, :length => 0..256
+  property :password,   String,   :required => true, :length => 6..20
   property :confirmed,  Boolean,  :default  => false
   property :role,       String,   :default  => 'member'
   property :created_at, DateTime  # A DateTime, for any date you might like.
   property :last_at,    DateTime
+  
+  validates_uniqueness_of username, email
 end
 
 configure do
   DataMapper.auto_upgrade!
+  set :sessions, true
 end
 
 helpers do
@@ -33,25 +37,6 @@ helpers do
   def hashit(pass)
     salt = "some amazingly long and salty bit of stringage"
     Digest::SHA256.digest(pass+salt)
-  end
-  
-  def validate_user(username)
-    new_regex = /[a-zA-Z0-9]/
-	if User.first(:username => username).nil?
-	  return false
-	elsif username.validate(new_regex)
-	  return true
-	else
-	  return false
-	end
-  end
-  
-  def validate_email(email)
-    return true
-  end
-  
-  def validate_pw(password)
-    return true
   end
 
 end
@@ -89,16 +74,17 @@ get '/signup' do
 end
 
 post '/signup' do
-  if(validate_user(params[:username]) && validate_email(params[:email]) && validate_pw(params[:password]))
-  # if(true)  
   # create user
-    User.create(:username   => params[:username], 
+  user = User.new(:username   => params[:username], 
                 :email      => params[:email],
                 :password   => hashit(params[:password]),
 	  	  	    :created_at => Time.now)
-    redirect '/signup#woo'
+  if user.save
+    # my_account is valid and has been saved
+	redirect '/signup#thanks'
   else
-    redirect '/signup'
+    session[:regErr] = User.errors
+	redirect '/signup'
   end
 end
 
