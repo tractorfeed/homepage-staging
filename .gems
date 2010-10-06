@@ -1,0 +1,9 @@
+sinatra
+dm-core -s git://github.com/datamapper/dm-validations
+dm-postgres-adapter --prerelease
+dm-migrations --prerelease
+dm-validations --prerelease
+dm-timestamps --prerelease
+ext-lib
+addressable
+json_pure

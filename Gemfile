@@ -1,6 +1,0 @@
-gem 'sinatra'
-gem 'dm-validations', :git => 'git://github.com/datamapper/dm-validations' 
-gem 'dm-core', :git => 'git://github.com/datamapper/dm-core'
-gem 'dm-migrations', :git => 'git://github.com/datamapper/dm-migrations'
-gem 'dm-postgres-adapter', :git => 'git://github.com/datamapper/dm-postgres-adapter'
-gem 'dm-timestamps', :git => 'git://github.com/datamapper/dm-timestamps'
