@@ -5,8 +5,8 @@ require 'dm-migrations'
 require 'dm-validations'
 require 'digest/sha2'
 
-# DataMapper.setup(:default, ENV['DATABASE_URL'])
-DataMapper.setup(:default, 'sqlite://local.db')
+DataMapper.setup(:default, ENV['DATABASE_URL'])
+# DataMapper.setup(:default, 'sqlite://local.db')
 
 class User
   include DataMapper::Resource
