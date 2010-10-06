@@ -3,6 +3,7 @@ require 'sinatra'
 require 'dm-core'
 require 'dm-migrations'
 require 'dm-validations'
+require 'dm-timestamps'
 require 'digest/sha2'
 
 DataMapper.setup(:default, ENV['DATABASE_URL'])
@@ -21,8 +22,10 @@ class User
   property :password,   String,   :required => true, :length => 6..20
   property :confirmed,  Boolean,  :default  => false
   property :role,       String,   :default  => 'member'
-  property :created_at, DateTime  # A DateTime, for any date you might like.
-  property :last_at,    DateTime
+  property :created_at, DateTime
+  property :created_on, Date
+  property :updated_at, DateTime
+  property :updated_on, Date
   
   validates_uniqueness_of username, email
 end

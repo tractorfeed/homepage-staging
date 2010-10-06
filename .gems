@@ -2,5 +2,5 @@ sinatra
 dm-core
 dm-postgres-adapter
 dm-migrations
-dm-types
 dm-validations
+dm-timestamps
