@@ -90,7 +90,7 @@ post '/signup' do
     # my_account is valid and has been saved
 	redirect '/signup#thanks'
   else
-    my_account.errors.each do |e|
+    user.errors.each do |e|
        puts e
     end
     # session[:regErr] = user.errors
