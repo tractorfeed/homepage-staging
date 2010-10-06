@@ -12,7 +12,7 @@ class User
   include DataMapper::Resource
 
   property :id,         Serial    # An auto-increment integer key
-  property :username,   String,   :required => true, :format => /[a-zA-Z0-9]*/,  :length => 6..20
+  property :username,   String,   :required => true #, :format => /[a-zA-Z0-9]*/,  :length => 6..20
   property :firstname,  String,   :default  => "",   :format => /[a-zA-Z]*/,     :length => 0..20
   property :lastname,   String,   :default  => "",   :format => /[a-zA-Z]*/,     :length => 0..20
   property :link,       String,   :default  => "",   :format => :url ,           :length => 0..512
