@@ -4,6 +4,3 @@ dm-postgres-adapter --version 1.0.0
 dm-migrations --version 1.0.0
 dm-validations --version 1.0.0
 dm-timestamps --version 1.0.0
-ext-lib
-addressable
-json_pure
