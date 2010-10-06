@@ -1,5 +1,8 @@
 sinatra
 rack
+extlib
+addressable
+json_pure
 dm-core --version 1.0.0
 dm-postgres-adapter --version 1.0.0
 dm-migrations --version 1.0.0
